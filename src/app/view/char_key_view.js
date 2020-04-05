@@ -19,6 +19,7 @@ class CharKeyView {
   initializeElement() {
     this.keyElement = document.createElement('div');
     this.keyElement.classList.add('key');
+    this.keyElement.classList.add('key_type_char');
 
     this.baseKeyCharElement = document.createElement('div');
     this.baseKeyCharElement.classList.add('key__char');

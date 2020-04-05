@@ -1,45 +1,104 @@
-
-
 // keyboard key
 
-$keyWidth : 50;
+$keyWidth: 50;
 $keyHeight: 50;
-$keyPressDepth : 0.9;
+$keyPressDepth: 0.9;
 
 .key {
-    width: #{$keyWidth}px;
-    height: #{$keyHeight}px;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    &.key_type_char {
+        width: #{$keyWidth}px;
+        height: #{$keyHeight}px;
 
-    background-color: #1c1e25;
-    color:rgb(221, 221, 221);
-    
-    border: 1px solid white;
-    border-radius: 5px;
+        background-color: #1c1e25;
+        color: rgb(221, 221, 221);
 
-    display: grid;
-    gap: 0;
-    grid-template-rows:1fr 1fr;
-    grid-template-columns:1fr 1fr;
-    grid-template-areas: "tl tr"
-                         "bl br";
+        border: 1px solid white;
+        border-radius: 5px;
+
+        display: grid;
+        gap: 0;
+        grid-template-rows: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+            "tl tr"
+            "bl br";
+    }
+
+    &.key_type_oem {
+        background-color: #1c1e25;
+        color: rgb(221, 221, 221);
+
+        border: 1px solid white;
+        border-radius: 5px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0;
+
+        position: relative;
+    }
+
+    &.key_style_space {
+        width: #{$keyWidth * 5}px;
+        height: #{$keyHeight}px;
+    }
+
+    &.key_style_space:before{
+        content: '[----]';
+    }
+
+    &.key_style_caps {
+        width: #{$keyWidth * 2}px;
+        height: #{$keyHeight}px;
+    }
+
+    &.key_style_caps:before{
+        content: 'Caps';
+    }
+
+    &.key_style_tab {
+        width: #{$keyWidth * 2}px;
+        height: #{$keyHeight}px;
+    }
+
+    &.key_style_tab:before{
+        content: 'Tab';
+    }
+
 
     transition: all 150ms ease;
 
     cursor: pointer;
     user-select: none;
 
-    &:hover{
+    &:hover {
         background-color: black;
         border: 1px solid #1c1e25;
-        color:white;
+        color: white;
+    }
+
+    .key__longpress_indicator
+    {
+        width:10px;
+        height: 10px;
+
+        position: absolute;
+        right: 10px;
+        
+        border-radius: 50%;
+    }
+
+    .key__longpress_indicator_enabled{
+        background-color: rgb(236, 17, 17);
     }
 
     .key__char {
         width: #{$keyWidth/2}px;
         height: #{$keyHeight/2}px;
-        
+
         box-sizing: border-box;
 
         display: flex;
@@ -66,12 +125,13 @@ $keyPressDepth : 0.9;
     &.key_clicked {
         animation: anim-effect-click 0.3s forwards;
     }
-    
+
     @keyframes anim-effect-click {
         0% {
             transform: scale3d($keyPressDepth, $keyPressDepth, $keyPressDepth);
         }
-        25%, 50% {
+        25%,
+        50% {
             opacity: 1;
         }
         to {
