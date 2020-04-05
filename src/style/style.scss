@@ -1,0 +1,82 @@
+
+
+// keyboard key
+
+$keyWidth : 50;
+$keyHeight: 50;
+$keyPressDepth : 0.9;
+
+.key {
+    width: #{$keyWidth}px;
+    height: #{$keyHeight}px;
+
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+    background-color: #1c1e25;
+    color:rgb(221, 221, 221);
+    
+    border: 1px solid white;
+    border-radius: 5px;
+
+    display: grid;
+    gap: 0;
+    grid-template-rows:1fr 1fr;
+    grid-template-columns:1fr 1fr;
+    grid-template-areas: "tl tr"
+                         "bl br";
+
+    transition: all 150ms ease;
+
+    cursor: pointer;
+    user-select: none;
+
+    &:hover{
+        background-color: black;
+        border: 1px solid #1c1e25;
+        color:white;
+    }
+
+    .key__char {
+        width: #{$keyWidth/2}px;
+        height: #{$keyHeight/2}px;
+        
+        box-sizing: border-box;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .key__char_position_bl {
+        grid-area: bl;
+    }
+
+    .key__char_position_br {
+        grid-area: br;
+    }
+
+    .key__char_position_tl {
+        grid-area: tl;
+    }
+
+    .key__char_position_tr {
+        grid-area: tr;
+    }
+
+    &.key_clicked {
+        animation: anim-effect-click 0.3s forwards;
+    }
+    
+    @keyframes anim-effect-click {
+        0% {
+            transform: scale3d($keyPressDepth, $keyPressDepth, $keyPressDepth);
+        }
+        25%, 50% {
+            opacity: 1;
+        }
+        to {
+            opacity: 1;
+            transform: scale3d($keyPressDepth, $keyPressDepth, $keyPressDepth);
+        }
+    }
+}
