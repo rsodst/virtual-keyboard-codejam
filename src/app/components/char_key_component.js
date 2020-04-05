@@ -1,23 +1,23 @@
 import CharKey from '../model/char_key';
 import CharKeyView from '../view/char_key_view';
 
-class CharKeyComposer {
-  constructor(code, baseChar, alterChar) {
+class CharKeyComponent {
+  constructor(code, baseChar, alterChar, inputCallback) {
     this.code = code;
     this.charKey = new CharKey(baseChar, alterChar);
-    this.charKeyView = new CharKeyView(this.charKey);
+    this.keyView = new CharKeyView(this.charKey);
 
     this.keyUpHandler = () => {
-      console.log(this.charKey.baseChar);
-      this.charKeyView.setUnpressed();
+      inputCallback(this.charKey);
+      this.keyView.setUnpressed();
     };
 
     this.keyDownHandler = () => {
-      this.charKeyView.keyElement.addEventListener('mouseup', this.keyUpHandler);
-      this.charKeyView.setPressed();
+      this.keyView.keyElement.addEventListener('mouseup', this.keyUpHandler);
+      this.keyView.setPressed();
     };
 
-    this.charKeyView.keyElement.addEventListener('mousedown', this.keyDownHandler);
+    this.keyView.keyElement.addEventListener('mousedown', this.keyDownHandler);
 
     document.addEventListener('keydown', (e) => {
       if (e.keyCode === this.code) {
@@ -33,4 +33,4 @@ class CharKeyComposer {
   }
 }
 
-export default CharKeyComposer;
+export default CharKeyComponent;

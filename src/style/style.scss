@@ -1,10 +1,20 @@
 // keyboard key
 
-$keyWidth: 50;
-$keyHeight: 50;
-$keyPressDepth: 0.9;
+.keyboard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.row {
+    display: flex;
+}
 
 .key {
+    $keyWidth: 50;
+    $keyHeight: 50;
+    $keyPressDepth: 0.9;
+
     font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 
     &.key_type_char {
@@ -27,6 +37,7 @@ $keyPressDepth: 0.9;
     }
 
     &.key_type_oem {
+        font-size: 12px;
         background-color: #1c1e25;
         color: rgb(221, 221, 221);
 
@@ -68,6 +79,59 @@ $keyPressDepth: 0.9;
         content: 'Tab';
     }
 
+    &.key_style_shift {
+        width: #{$keyWidth * 2}px;
+        height: #{$keyHeight}px;
+    }
+
+    &.key_style_shift:before{
+        content: 'Shift';
+    }
+
+    &.key_style_enter {
+        width: #{$keyWidth * 2}px;
+        height: #{$keyHeight}px;
+    }
+
+    &.key_style_enter:before{
+        content: 'Enter';
+    }
+
+    &.key_style_backspace {
+        width: #{$keyWidth * 2}px;
+        height: #{$keyHeight}px;
+    }
+
+    &.key_style_backspace:before{
+        content: 'BackSpace';
+    }
+
+    &.key_style_ctrl {
+        width: #{$keyWidth}px;
+        height: #{$keyHeight}px;
+    }
+
+    &.key_style_ctrl:before{
+        content: 'Ctrl';
+    }
+
+    &.key_style_alt {
+        width: #{$keyWidth}px;
+        height: #{$keyHeight}px;
+    }
+
+    &.key_style_alt:before{
+        content: 'Alt';
+    }
+
+    &.key_style_win {
+        width: #{$keyWidth}px;
+        height: #{$keyHeight}px;
+    }
+
+    &.key_style_win:before{
+        content: 'Win';
+    }
 
     transition: all 150ms ease;
 
@@ -140,3 +204,4 @@ $keyPressDepth: 0.9;
         }
     }
 }
+

@@ -1,8 +1,5 @@
-import GeneralKey from './general_key';
-
-class OemKey extends GeneralKey {
+class OemKey {
   constructor(keyStyle) {
-    super();
     this.keyStyle = keyStyle;
   }
 }

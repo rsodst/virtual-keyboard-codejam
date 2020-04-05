@@ -1,39 +1,39 @@
 import OemKey from '../model/oem_key';
 import OemKeyView from '../view/oem_key_view';
 
-class OemKeyComposer {
-  constructor(code, keyStyle, longPressEnabled) {
+class OemKeyComponent {
+  constructor(code, keyStyle, inputCallback, longPressEnabled) {
     this.code = code;
     this.oemKey = new OemKey(keyStyle);
     this.longPressEnabled = longPressEnabled;
-    this.oemKeyView = new OemKeyView(this.oemKey);
+    this.keyView = new OemKeyView(this.oemKey);
 
     // handle long mouse click and simple mouse click
     let longPressTimeout;
 
     this.keyUpHandler = () => {
       clearTimeout(longPressTimeout);
-      console.log('oem key pressed');
-      this.oemKeyView.setUnpressed();
+      inputCallback(this.oemKey);
+      this.keyView.setUnpressed();
     };
 
     this.keyDownHandler = (isMouseClick) => {
-      this.oemKeyView.keyElement.addEventListener('mouseup', this.keyUpHandler);
-      this.oemKeyView.setPressed();
-      this.oemKeyView.setLongUnpressed();
+      this.keyView.keyElement.addEventListener('mouseup', this.keyUpHandler);
+      this.keyView.setPressed();
+      this.keyView.setLongUnpressed();
 
       if (this.longPressEnabled && isMouseClick) {
         longPressTimeout = window.setTimeout(() => {
           console.log('oem key long pressed');
           clearTimeout(longPressTimeout);
-          this.oemKeyView.keyElement.removeEventListener('mouseup', this.keyUpHandler);
-          this.oemKeyView.setUnpressed();
-          this.oemKeyView.setLongPressed();
+          this.keyView.keyElement.removeEventListener('mouseup', this.keyUpHandler);
+          this.keyView.setUnpressed();
+          this.keyView.setLongPressed();
         }, 1000);
       }
     };
 
-    this.oemKeyView.keyElement.addEventListener('mousedown', this.keyDownHandler);
+    this.keyView.keyElement.addEventListener('mousedown', this.keyDownHandler);
 
     document.addEventListener('keydown', (e) => {
       if (e.keyCode === this.code) {
@@ -51,4 +51,4 @@ class OemKeyComposer {
   }
 }
 
-export default OemKeyComposer;
+export default OemKeyComponent;
