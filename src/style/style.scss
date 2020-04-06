@@ -1,0 +1,323 @@
+body {
+    padding: 0;
+    margin:0;
+}
+
+#text-area
+{
+    padding: 2rem;
+    position: fixed;
+    background-color: black;
+    background-image: radial-gradient(
+      rgba(32, 32, 32, 0.75), black 120%
+    );
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    overflow: hidden;
+    color: greenyellow;
+    font: 1.3rem Inconsolata, monospace;
+    text-shadow: 0 0 5px #C8C8C8;
+}
+
+.container {
+    position: fixed;
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: repeating-linear-gradient(
+        0deg,
+        rgba(rgb(87, 87, 87), 0.15),
+        rgba(black, 0.15) 1px,
+        transparent 1px,
+        transparent 2px
+      );
+      pointer-events: none;
+    }
+  }
+  ::selection {
+    background: #0080FF;
+    text-shadow: none;
+  }
+
+// keyboard key
+
+$keyboardBackground: #878787;
+
+.keyboard {
+    position: absolute;
+
+    background-color: $keyboardBackground;
+
+    display: inline-flex;
+    flex-direction: column;
+    align-items: start;
+
+    padding: 2px;
+    border-radius: 5px;
+    border: 2px solid rgb(77, 76, 76);
+
+    top:300px;
+    left:20px;
+}
+
+.row {
+    display: flex;
+    justify-content: start;
+}
+
+.key {
+    $keyWidth: 50;
+    $keyHeight: 50;
+    $keyPressDepth: 0.96;
+
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana,
+        sans-serif;
+
+    &.key_type_char {
+        font-size: 14px;
+        width: #{$keyWidth}px;
+        height: #{$keyHeight}px;
+
+        background-color: #1c1e25;
+        color: rgb(221, 221, 221);
+
+        border: 1px solid $keyboardBackground;
+        border-radius: 5px;
+
+        display: grid;
+        gap: 0;
+        grid-template-rows: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+            "tl tr"
+            "bl br";
+    }
+
+    &.key_type_oem {
+        font-size: 12px;
+        background-color: #1c1e25;
+        color: rgb(221, 221, 221);
+
+        border: 1px solid $keyboardBackground;
+        border-radius: 5px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        position: relative;
+    }
+
+    &.key_style_space {
+        width: #{$keyWidth * 7.1}px;
+        height: #{$keyHeight}px;
+    }
+
+    &.key_style_space:before {
+        content: "[----]";
+    }
+
+    &.key_style_tab {
+        width: #{$keyWidth * 1.3}px;
+        height: #{$keyHeight}px;
+    }
+
+    &.key_style_tab:before {
+        content: "Tab";
+    }
+
+    &.key_style_caps {
+        width: #{$keyWidth * 1.6}px;
+        height: #{$keyHeight}px;
+    }
+
+    &.key_style_caps:before {
+        content: "Caps";
+    }
+
+    &.key_style_shift {
+        width: #{$keyWidth * 1.9}px;
+        height: #{$keyHeight}px;
+    }
+
+    &.key_style_shift:before {
+        content: "Shift";
+    }
+
+    &.key_style_enter {
+        width: #{$keyWidth * 1.74}px;
+        height: #{$keyHeight}px;
+    }
+
+    &.key_style_enter:before {
+        content: "Enter";
+    }
+
+    &.key_style_backspace {
+        width: #{$keyWidth * 1.3}px;
+        height: #{$keyHeight}px;
+    }
+
+    &.key_style_backspace:before {
+        content: "<-----";
+    }
+
+    &.key_style_ctrl {
+        width: #{$keyWidth}px;
+        height: #{$keyHeight}px;
+    }
+
+    &.key_style_ctrl:before {
+        content: "    Ctrl";
+    }
+
+    &.key_style_alt {
+        width: #{$keyWidth}px;
+        height: #{$keyHeight}px;
+    }
+
+    &.key_style_alt:before {
+        content: "    Alt";
+    }
+
+    &.key_style_del {
+        width: #{$keyWidth}px;
+        height: #{$keyHeight}px;
+    }
+
+    &.key_style_del:before {
+        content: "    Del";
+    }
+
+    &.key_style_left {
+        width: #{$keyWidth}px;
+        height: #{$keyHeight}px;
+    }
+
+    &.key_style_left:before {
+        content: "  <--";
+    }
+
+    &.key_style_bottom {
+        width: #{$keyWidth}px;
+        height: #{$keyHeight}px;
+    }
+
+    &.key_style_bottom:before {
+        content: "     \\/";
+    }
+
+    &.key_style_right {
+        width: #{$keyWidth}px;
+        height: #{$keyHeight}px;
+    }
+
+    &.key_style_right:before {
+        content: "  -->";
+    }
+
+    &.key_style_top {
+        width: #{$keyWidth}px;
+        height: #{$keyHeight}px;
+    }
+
+    &.key_style_top:before {
+        content: "     /\\";
+    }
+
+    &.key_style_home {
+        width: #{$keyWidth * 1.44}px;
+        height: #{$keyHeight}px;
+    }
+
+    &.key_style_home:before {
+        content: "home";
+    }
+
+    &.key_style_end {
+        width: #{$keyWidth * 1.44}px;
+        height: #{$keyHeight}px;
+    }
+
+    &.key_style_end:before {
+        content: "end";
+    }
+
+    transition: all 150ms ease;
+
+    cursor: pointer;
+    user-select: none;
+
+    &:hover {
+        background-color: black;
+        border: 1px solid #1c1e25;
+        color: white;
+    }
+
+    .key__longpress_indicator {
+        width: 10px;
+        height: 10px;
+
+        position: absolute;
+        right: 10px;
+
+        border-radius: 50%;
+    }
+
+    .key__longpress_indicator_enabled {
+        background-color: rgb(236, 17, 17);
+    }
+
+    .key__char {
+        width: #{$keyWidth/2}px;
+        height: #{$keyHeight/2}px;
+
+        box-sizing: border-box;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .key__char_position_bl {
+        grid-area: bl;
+    }
+
+    .key__char_position_br {
+        grid-area: br;
+    }
+
+    .key__char_position_tl {
+        grid-area: tl;
+    }
+
+    .key__char_position_tr {
+        grid-area: tr;
+    }
+
+    &.key_clicked {
+        background-color: black;
+        border: 1px solid #1c1e25;
+        color: white;
+        animation: anim-effect-click 0.3s forwards;
+    }
+
+    @keyframes anim-effect-click {
+        0% {
+            transform: scale3d($keyPressDepth, $keyPressDepth, $keyPressDepth);
+        }
+        25%,
+        50% {
+            opacity: 1;
+        }
+        to {
+            opacity: 1;
+            transform: scale3d($keyPressDepth, $keyPressDepth, $keyPressDepth);
+        }
+    }
+}
