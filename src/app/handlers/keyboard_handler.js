@@ -152,6 +152,19 @@ class KeyboardBuilder {
           }, false, false);
         }
 
+        // delete
+        if (templateKey.code === 46) {
+          key = new OemKeyComponent(templateKey.code, templateKey.style, () => {
+            const { value: val, selectionStart: start, selectionEnd: end } = this.textArea;
+            if (start !== end) {
+              this.textArea.value = `${val.slice(0, start)}${val.slice(end)}`;
+            } else if (end !== val.length) {
+              this.textArea.value = `${val.slice(0, start)}${val.slice(start + 1)}`;
+            }
+            this.setPositionCursor(start);
+          }, false, false);
+        }
+
         if (key === undefined) {
           key = new OemKeyComponent(templateKey.code, templateKey.style, () => { });
         }

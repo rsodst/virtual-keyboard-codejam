@@ -173,7 +173,7 @@ $keyboardBackground: #878787;
     }
 
     &.key_style_ctrl:before {
-        content: "Ctrl";
+        content: "    Ctrl";
     }
 
     &.key_style_alt {
@@ -182,16 +182,16 @@ $keyboardBackground: #878787;
     }
 
     &.key_style_alt:before {
-        content: "Alt";
+        content: "    Alt";
     }
 
-    &.key_style_win {
+    &.key_style_del {
         width: #{$keyWidth}px;
         height: #{$keyHeight}px;
     }
 
-    &.key_style_win:before {
-        content: "Win";
+    &.key_style_del:before {
+        content: "    Del";
     }
 
     &.key_style_left {
@@ -200,7 +200,7 @@ $keyboardBackground: #878787;
     }
 
     &.key_style_left:before {
-        content: "<--";
+        content: "  <--";
     }
 
     &.key_style_bottom {
@@ -209,7 +209,7 @@ $keyboardBackground: #878787;
     }
 
     &.key_style_bottom:before {
-        content: "\\/";
+        content: "     \\/";
     }
 
     &.key_style_right {
@@ -218,7 +218,7 @@ $keyboardBackground: #878787;
     }
 
     &.key_style_right:before {
-        content: "-->";
+        content: "  -->";
     }
 
     &.key_style_top {
@@ -227,7 +227,7 @@ $keyboardBackground: #878787;
     }
 
     &.key_style_top:before {
-        content: "/\\";
+        content: "     /\\";
     }
 
     &.key_style_home {

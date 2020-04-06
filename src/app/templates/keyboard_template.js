@@ -243,8 +243,8 @@ const KeyboardTemplate = [
     },
     {
       type: 'oem',
-      code: 91,
-      style: 'key_style_win',
+      code: 46,
+      style: 'key_style_del',
     },
     {
       type: 'oem',
