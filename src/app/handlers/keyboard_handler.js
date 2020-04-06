@@ -22,6 +22,10 @@ class KeyboardBuilder {
 
     this.textArea = document.getElementById('text-area');
 
+    this.textArea.onblur = () => {
+      this.textArea.focus();
+    };
+
     const setPositionCursor = (position) => {
       this.textArea.focus();
       this.textArea.selectionStart = position;
@@ -106,43 +110,47 @@ class KeyboardBuilder {
           });
         }
 
-         // left
-         if (templateKey.code === 37) {
+        // left
+        if (templateKey.code === 37) {
           key = new OemKeyComponent(templateKey.code, templateKey.style, () => {
+            setPositionCursor(this.textArea.selectionStart - 1);
           }, false, false);
         }
 
-         // right
-         if (templateKey.code === 39) {
+        // right
+        if (templateKey.code === 39) {
           key = new OemKeyComponent(templateKey.code, templateKey.style, () => {
+            setPositionCursor(this.textArea.selectionStart + 1);
           }, false, false);
         }
 
-         // up
-         if (templateKey.code === 38) {
+        // up
+        if (templateKey.code === 38) {
           key = new OemKeyComponent(templateKey.code, templateKey.style, () => {
+            setPositionCursor(0);
           }, false, false);
         }
 
-         // down
-         if (templateKey.code === 40) {
+        // down
+        if (templateKey.code === 40) {
           key = new OemKeyComponent(templateKey.code, templateKey.style, () => {
+            setPositionCursor(this.textArea.value.length);
           }, false, false);
         }
 
-           // home
-           if (templateKey.code === 36) {
-            key = new OemKeyComponent(templateKey.code, templateKey.style, () => {
-              setPositionCursor(0);
-            }, false, false);
-          }
+        // home
+        if (templateKey.code === 36) {
+          key = new OemKeyComponent(templateKey.code, templateKey.style, () => {
+            setPositionCursor(0);
+          }, false, false);
+        }
 
-           // end
-           if (templateKey.code === 35) {
-            key = new OemKeyComponent(templateKey.code, templateKey.style, () => {
-              setPositionCursor(this.textArea.value.length);
-            }, false, false);
-          }
+        // end
+        if (templateKey.code === 35) {
+          key = new OemKeyComponent(templateKey.code, templateKey.style, () => {
+            setPositionCursor(this.textArea.value.length);
+          }, false, false);
+        }
 
         if (key === undefined) {
           key = new OemKeyComponent(templateKey.code, templateKey.style, () => { });

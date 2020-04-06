@@ -12,7 +12,8 @@ textArea.value = 'Target Platform: Windows 10';
 textArea.value += '\nTarget Browser: Chrome 80.0.3987.149';
 textArea.value += '\nSwitch Layout: Ctrl+Shift';
 textArea.value += '\nKeyboard has supported Drag\'n\'Drop';
-textArea.value += '\nUse Mose to move keyboard panel\n';
+textArea.value += '\nUse Mose to move keyboard panel';
+textArea.value += '\nUse long press the button to fix the press mode\n';
 
 container.appendChild(textArea);
 
