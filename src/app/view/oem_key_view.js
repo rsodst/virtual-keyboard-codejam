@@ -1,6 +1,7 @@
 class OemKeyView {
   constructor(oemKey) {
     this.initializeElement(oemKey.keyStyle);
+    this.indicatorEnabled = false;
   }
 
   initializeElement(keyStyle) {

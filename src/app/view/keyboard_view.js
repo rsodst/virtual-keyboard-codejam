@@ -20,38 +20,34 @@ class KeyboardView {
     });
 
     this.keyboardView.onmousedown = (event) => {
-      this.dragFunction(this.keyboardView, event);
+      this.dragFunction(event);
     };
 
     this.keyboardView.ondragstart = function () {
       return false;
     };
-  }
 
-  dragFunction(obj, event) {
-    const shiftX = event.clientX - obj.getBoundingClientRect().left;
-    const shiftY = event.clientY - obj.getBoundingClientRect().top;
+    this.dragFunction = (event) => {
+      const shiftX = event.clientX - this.keyboardView.getBoundingClientRect().left;
+      const shiftY = event.clientY - this.keyboardView.getBoundingClientRect().top;
 
-    // переносит мяч на координаты (pageX, pageY),
-    // дополнительно учитывая изначальный сдвиг относительно указателя мыши
-    function moveAt(pageX, pageY) {
-      obj.style.left = `${pageX - shiftX}px`;
-      obj.style.top = `${pageY - shiftY}px`;
-    }
+      const moveAt = (pageX, pageY) => {
+        this.keyboardView.style.left = `${pageX - shiftX}px`;
+        this.keyboardView.style.top = `${pageY - shiftY}px`;
+      };
 
-    moveAt(event.pageX, event.pageY);
+      moveAt(event.pageX, event.pageY);
 
-    function onMouseMove(evnt) {
-      moveAt(evnt.pageX, evnt.pageY);
-    }
+      const onMouseMove = (evnt) => {
+        moveAt(evnt.pageX, evnt.pageY);
+      };
 
-    // передвигаем мяч при событии mousemove
-    document.addEventListener('mousemove', onMouseMove);
+      document.addEventListener('mousemove', onMouseMove);
 
-    // отпустить мяч, удалить ненужные обработчики
-    obj.onmouseup = function () {
-      document.removeEventListener('mousemove', onMouseMove);
-      obj.onmouseup = null;
+      this.keyboardView.onmouseup = () => {
+        document.removeEventListener('mousemove', onMouseMove);
+        this.keyboardView.onmouseup = null;
+      };
     };
   }
 }

@@ -13,7 +13,7 @@ class OemKeyComponent {
 
     this.keyUpHandler = () => {
       clearTimeout(longPressTimeout);
-      inputCallback(this.key);
+      inputCallback(this.key, this.keyView);
       this.keyView.setUnpressed();
     };
 

@@ -116,7 +116,7 @@ $keyboardBackground: #878787;
     }
 
     &.key_style_backspace:before {
-        content: "BackSpace";
+        content: "<-----";
     }
 
     &.key_style_ctrl {

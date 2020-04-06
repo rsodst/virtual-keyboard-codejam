@@ -17,7 +17,19 @@ class KeyboardBuilder {
     templateRow.forEach((templateKey) => {
       let key;
       if (templateKey.type === 'oem') {
-        key = new OemKeyComponent(templateKey.code, templateKey.style, () => {});
+        if (templateKey.code === 20) {
+          key = new OemKeyComponent(templateKey.code, templateKey.style, (k, v) => {
+            if (v.indicatorEnabled) {
+              v.setLongUnpressed();
+              v.indicatorEnabled = false;
+            } else {
+              v.setLongPressed();
+              v.indicatorEnabled = true;
+            }
+          });
+        } else {
+          key = new OemKeyComponent(templateKey.code, templateKey.style, () => {});
+        }
       }
 
       if (templateKey.type === 'char') {

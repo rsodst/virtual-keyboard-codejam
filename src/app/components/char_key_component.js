@@ -8,7 +8,7 @@ class CharKeyComponent {
     this.keyView = new CharKeyView(this.key);
 
     this.keyUpHandler = () => {
-      inputCallback(this.key);
+      inputCallback(this.key, this.keyView);
       this.keyView.setUnpressed();
     };
 
