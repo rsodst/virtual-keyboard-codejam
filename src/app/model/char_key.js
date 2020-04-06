@@ -1,5 +1,8 @@
-class CharKey {
+import GeneralKey from './general_key';
+
+class CharKey extends GeneralKey {
   constructor(baseChar, alterChar) {
+    super('char');
     this.baseChar = baseChar;
     this.alterChar = alterChar;
   }

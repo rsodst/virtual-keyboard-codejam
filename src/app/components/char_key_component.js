@@ -4,11 +4,11 @@ import CharKeyView from '../view/char_key_view';
 class CharKeyComponent {
   constructor(code, baseChar, alterChar, inputCallback) {
     this.code = code;
-    this.charKey = new CharKey(baseChar, alterChar);
-    this.keyView = new CharKeyView(this.charKey);
+    this.key = new CharKey(baseChar, alterChar);
+    this.keyView = new CharKeyView(this.key);
 
     this.keyUpHandler = () => {
-      inputCallback(this.charKey);
+      inputCallback(this.key);
       this.keyView.setUnpressed();
     };
 

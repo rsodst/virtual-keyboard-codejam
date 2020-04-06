@@ -45,6 +45,14 @@ const KeyboardTemplate = [
       type: 'char',
       code: 48,
     },
+    { //-
+      type: 'char',
+      code: 189,
+    },
+    { //+
+      type: 'char',
+      code: 187,
+    },
     {
       type: 'oem',
       code: 8,
@@ -212,8 +220,18 @@ const KeyboardTemplate = [
       code: 190,
     },
     {
+      type: 'oem',
+      code: 38,
+      style: 'key_style_top',
+    },
+    {
       type: 'char',
       code: 191,
+    },
+    {
+      type: 'oem',
+      code: 36,
+      style: 'key_style_home',
     },
   ],
   // ctrl,win,alt,space
@@ -237,6 +255,26 @@ const KeyboardTemplate = [
       type: 'oem',
       code: 32,
       style: 'key_style_space',
+    },
+    { // left
+      type: 'oem',
+      code: 37,
+      style: 'key_style_left',
+    },
+    { // bottom
+      type: 'oem',
+      code: 40,
+      style: 'key_style_bottom',
+    },
+    { // right
+      type: 'oem',
+      code: 39,
+      style: 'key_style_right',
+    },
+    {
+      type: 'oem',
+      code: 35,
+      style: 'key_style_end',
     },
   ],
 ];

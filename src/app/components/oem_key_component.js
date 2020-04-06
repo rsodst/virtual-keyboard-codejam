@@ -4,16 +4,16 @@ import OemKeyView from '../view/oem_key_view';
 class OemKeyComponent {
   constructor(code, keyStyle, inputCallback, longPressEnabled) {
     this.code = code;
-    this.oemKey = new OemKey(keyStyle);
+    this.key = new OemKey(keyStyle);
     this.longPressEnabled = longPressEnabled;
-    this.keyView = new OemKeyView(this.oemKey);
+    this.keyView = new OemKeyView(this.key);
 
     // handle long mouse click and simple mouse click
     let longPressTimeout;
 
     this.keyUpHandler = () => {
       clearTimeout(longPressTimeout);
-      inputCallback(this.oemKey);
+      inputCallback(this.key);
       this.keyView.setUnpressed();
     };
 

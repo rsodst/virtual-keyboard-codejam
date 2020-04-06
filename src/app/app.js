@@ -1,8 +1,9 @@
 import '../style/style.scss';
-import KeyboardView from './view/keyboard_view';
-import Keyboard from './model/keyboard';
+import LocaleManager from './Locales/LocaleManager';
+import KeyboardComponent from './components/keyboard_component';
 
-let keyboard = new Keyboard();
-let keyboardView = new KeyboardView(keyboard);
+let kbd = new KeyboardComponent();
+let localeManager = new LocaleManager();
+localeManager.updateLocale(kbd.keyboard.keyRows, 'en_US');
 
-document.body.appendChild(keyboardView.keyboardView);
+document.body.appendChild(kbd.keyboardView.keyboardView);
