@@ -4,7 +4,8 @@
   "description": "",
   "main": "key.js",
   "scripts": {
-    "start": "webpack-dev-server --history-api-fallback --inline --progress"
+    "start": "webpack-dev-server --history-api-fallback --inline --progress",
+    "build": "webpack -p"
   },
   "keywords": [],
   "author": "",
