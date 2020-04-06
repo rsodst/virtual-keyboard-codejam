@@ -2,10 +2,11 @@ import OemKey from '../model/oem_key';
 import OemKeyView from '../view/oem_key_view';
 
 class OemKeyComponent {
-  constructor(code, keyStyle, inputCallback, longPressEnabled) {
+  constructor(code, keyStyle, inputCallback, longPressEnabled, preventDefaultEnabled = true) {
     this.code = code;
     this.key = new OemKey(keyStyle);
     this.longPressEnabled = longPressEnabled;
+    this.preventDefaultEnabled = preventDefaultEnabled;
     this.keyView = new OemKeyView(this.key);
 
     // handle long mouse click and simple mouse click
@@ -14,16 +15,16 @@ class OemKeyComponent {
     this.keyUpHandler = () => {
       clearTimeout(longPressTimeout);
 
-      if (inputCallback) {
-        inputCallback(this.key, this.keyView);
-      }
-
       this.key.isPressed = false;
     };
 
     this.keyDownHandler = (isMouseClick) => {
       this.keyView.keyElement.addEventListener('mouseup', this.keyUpHandler);
       this.key.isPressed = true;
+
+      if (inputCallback) {
+        inputCallback(this.key, this.keyView);
+      }
 
       if (this.longPressEnabled && isMouseClick) {
         longPressTimeout = window.setTimeout(() => {
@@ -38,14 +39,18 @@ class OemKeyComponent {
     document.addEventListener('keydown', (e) => {
       if (e.keyCode === this.code) {
         this.keyDownHandler();
-        e.preventDefault();
+        if (this.preventDefaultEnabled) {
+          e.preventDefault();
+        }
       }
     });
 
     document.addEventListener('keyup', (e) => {
       if (e.keyCode === this.code) {
         this.keyUpHandler();
-        e.preventDefault();
+        if (this.preventDefaultEnabled) {
+          e.preventDefault();
+        }
       }
     });
   }

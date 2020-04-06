@@ -1,3 +1,49 @@
+body {
+    padding: 0;
+    margin:0;
+}
+
+#text-area
+{
+    padding: 2rem;
+    position: fixed;
+    background-color: black;
+    background-image: radial-gradient(
+      rgba(32, 32, 32, 0.75), black 120%
+    );
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    overflow: hidden;
+    color: greenyellow;
+    font: 1.3rem Inconsolata, monospace;
+    text-shadow: 0 0 5px #C8C8C8;
+}
+
+.container {
+    position: fixed;
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: repeating-linear-gradient(
+        0deg,
+        rgba(rgb(87, 87, 87), 0.15),
+        rgba(black, 0.15) 1px,
+        transparent 1px,
+        transparent 2px
+      );
+      pointer-events: none;
+    }
+  }
+  ::selection {
+    background: #0080FF;
+    text-shadow: none;
+  }
+
 // keyboard key
 
 $keyboardBackground: #878787;
@@ -14,7 +60,9 @@ $keyboardBackground: #878787;
     padding: 2px;
     border-radius: 5px;
     border: 2px solid rgb(77, 76, 76);
-    top:50%;
+
+    top:300px;
+    left:20px;
 }
 
 .row {

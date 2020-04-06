@@ -18,6 +18,23 @@ class KeyboardBuilder {
 
   // eslint-disable-next-line class-methods-use-this
   static createKeyRow(templateRow, keyboard) {
+    // text area controls
+
+    this.textArea = document.getElementById('text-area');
+
+    const setPositionCursor = (position) => {
+      this.textArea.focus();
+      this.textArea.selectionStart = position;
+      this.textArea.selectionEnd = position;
+    };
+
+    const writeText = (text) => {
+      const { value: val, selectionStart: start, selectionEnd: end } = this.textArea;
+      this.textArea.value = `${val.substring(0, start)}${text}${val.substring(end)}`;
+      setPositionCursor(start + 1);
+    };
+
+
     const keysRow = [];
     templateRow.forEach((templateKey) => {
       let key;
@@ -34,7 +51,7 @@ class KeyboardBuilder {
             if (this.ctrlKey.key.isPressed) {
               keyboard.changeLayout();
             }
-          });
+          }, true);
         }
 
         if (templateKey.code === 17) {
@@ -42,8 +59,90 @@ class KeyboardBuilder {
             if (this.shiftKey.key.isPressed) {
               keyboard.changeLayout();
             }
+          }, true);
+        }
+
+        // space
+        if (templateKey.code === 32) {
+          key = new OemKeyComponent(templateKey.code, templateKey.style, () => {
+            const { value: val, selectionStart: start, selectionEnd: end } = this.textArea;
+            this.textArea.value = `${val.substring(0, start)} ${val.substring(end)}`;
+            setPositionCursor(start + 1);
           });
         }
+
+        // enter
+        if (templateKey.code === 13) {
+          key = new OemKeyComponent(templateKey.code, templateKey.style, () => {
+            const { value: val, selectionStart: start, selectionEnd: end } = this.textArea;
+            this.textArea.value = `${val.substring(0, start)}\n${val.substring(end)}`;
+            setPositionCursor(start + 1);
+          });
+        }
+
+        // backspace
+        if (templateKey.code === 8) {
+          key = new OemKeyComponent(templateKey.code, templateKey.style, () => {
+            const { value: val, selectionStart: start, selectionEnd: end } = this.textArea;
+            if (start !== end) {
+              this.textArea.value = `${val.slice(0, start)}${val.slice(end)}`;
+              setPositionCursor(start);
+            } else if (start !== 0) {
+              this.textArea.value = `${val.slice(0, start - 1)}${val.slice(start)}`;
+              setPositionCursor(start - 1);
+            } else {
+              setPositionCursor(start);
+            }
+          });
+        }
+
+        // tab
+        if (templateKey.code === 9) {
+          key = new OemKeyComponent(templateKey.code, templateKey.style, () => {
+            const textArea = document.getElementById('text-area');
+            const { value: val, selectionStart: start, selectionEnd: end } = textArea;
+            textArea.value = `${val.substring(0, start)}\t${val.substring(end)}`;
+            setPositionCursor(start + 1);
+          });
+        }
+
+         // left
+         if (templateKey.code === 37) {
+          key = new OemKeyComponent(templateKey.code, templateKey.style, () => {
+          }, false, false);
+        }
+
+         // right
+         if (templateKey.code === 39) {
+          key = new OemKeyComponent(templateKey.code, templateKey.style, () => {
+          }, false, false);
+        }
+
+         // up
+         if (templateKey.code === 38) {
+          key = new OemKeyComponent(templateKey.code, templateKey.style, () => {
+          }, false, false);
+        }
+
+         // down
+         if (templateKey.code === 40) {
+          key = new OemKeyComponent(templateKey.code, templateKey.style, () => {
+          }, false, false);
+        }
+
+           // home
+           if (templateKey.code === 36) {
+            key = new OemKeyComponent(templateKey.code, templateKey.style, () => {
+              setPositionCursor(0);
+            }, false, false);
+          }
+
+           // end
+           if (templateKey.code === 35) {
+            key = new OemKeyComponent(templateKey.code, templateKey.style, () => {
+              setPositionCursor(this.textArea.value.length);
+            }, false, false);
+          }
 
         if (key === undefined) {
           key = new OemKeyComponent(templateKey.code, templateKey.style, () => { });
@@ -53,12 +152,13 @@ class KeyboardBuilder {
       if (templateKey.type === 'char') {
         key = new CharKeyComponent(templateKey.code, (pressedKey) => {
           if (this.shiftKey.key.isPressed || this.capsKey.key.keyPressIndicatorEnabled) {
-            console.log(pressedKey.alterChar);
+            writeText(pressedKey.alterChar);
           } else {
-            console.log(pressedKey.baseChar);
+            writeText(pressedKey.baseChar);
           }
         });
       }
+
 
       // save oem shift
       if (templateKey.code === 16) {

@@ -8,13 +8,14 @@ class CharKeyComponent {
     this.keyView = new CharKeyView(this.key);
 
     this.keyUpHandler = () => {
-      inputCallback(this.key, this.keyView);
       this.key.isPressed = false;
     };
 
     this.keyDownHandler = () => {
       this.keyView.keyElement.addEventListener('mouseup', this.keyUpHandler);
       this.key.isPressed = true;
+
+      inputCallback(this.key, this.keyView);
     };
 
     this.keyView.keyElement.addEventListener('mousedown', this.keyDownHandler);
