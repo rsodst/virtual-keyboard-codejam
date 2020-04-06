@@ -2,11 +2,12 @@ import OemKey from '../model/oem_key';
 import OemKeyView from '../view/oem_key_view';
 
 class OemKeyComponent {
-  constructor(code, keyStyle, inputCallback, longPressEnabled, preventDefaultEnabled = true) {
+  constructor(code, keyStyle, inputCallback, longPressEnabled, preventDefaultEnabled = true, disableKeyPressHandler = false) {
     this.code = code;
     this.key = new OemKey(keyStyle);
     this.longPressEnabled = longPressEnabled;
     this.preventDefaultEnabled = preventDefaultEnabled;
+    this.disableKeyPressHandler = disableKeyPressHandler;
     this.keyView = new OemKeyView(this.key);
 
     // handle long mouse click and simple mouse click
@@ -38,7 +39,9 @@ class OemKeyComponent {
 
     document.addEventListener('keydown', (e) => {
       if (e.keyCode === this.code) {
-        this.keyDownHandler();
+        if (this.disableKeyPressHandler === false) {
+          this.keyDownHandler();
+        }
         if (this.preventDefaultEnabled) {
           e.preventDefault();
         }
@@ -47,7 +50,9 @@ class OemKeyComponent {
 
     document.addEventListener('keyup', (e) => {
       if (e.keyCode === this.code) {
-        this.keyUpHandler();
+        if (this.disableKeyPressHandler === false) {
+          this.keyUpHandler();
+        }
         if (this.preventDefaultEnabled) {
           e.preventDefault();
         }

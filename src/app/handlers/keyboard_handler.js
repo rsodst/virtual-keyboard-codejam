@@ -114,28 +114,28 @@ class KeyboardBuilder {
         if (templateKey.code === 37) {
           key = new OemKeyComponent(templateKey.code, templateKey.style, () => {
             setPositionCursor(this.textArea.selectionStart - 1);
-          }, false, false);
+          }, false, false, true);
         }
 
         // right
         if (templateKey.code === 39) {
           key = new OemKeyComponent(templateKey.code, templateKey.style, () => {
             setPositionCursor(this.textArea.selectionStart + 1);
-          }, false, false);
+          }, false, false, true);
         }
 
         // up
         if (templateKey.code === 38) {
           key = new OemKeyComponent(templateKey.code, templateKey.style, () => {
             setPositionCursor(0);
-          }, false, false);
+          }, false, false, true);
         }
 
         // down
         if (templateKey.code === 40) {
           key = new OemKeyComponent(templateKey.code, templateKey.style, () => {
             setPositionCursor(this.textArea.value.length);
-          }, false, false);
+          }, false, false, true);
         }
 
         // home
@@ -161,8 +161,8 @@ class KeyboardBuilder {
             } else if (end !== val.length) {
               this.textArea.value = `${val.slice(0, start)}${val.slice(start + 1)}`;
             }
-            this.setPositionCursor(start);
-          }, false, false);
+            setPositionCursor(start);
+          }, false, false, true);
         }
 
         if (key === undefined) {
