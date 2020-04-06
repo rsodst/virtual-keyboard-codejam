@@ -9,6 +9,7 @@ class CharKeyComponent {
 
     this.keyUpHandler = () => {
       this.key.isPressed = false;
+      this.keyView.keyElement.removeEventListener('mouseup', this.keyUpHandler);
     };
 
     this.keyDownHandler = () => {

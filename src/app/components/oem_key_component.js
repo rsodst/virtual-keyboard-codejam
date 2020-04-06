@@ -15,8 +15,8 @@ class OemKeyComponent {
 
     this.keyUpHandler = () => {
       clearTimeout(longPressTimeout);
-
       this.key.isPressed = false;
+      this.keyView.keyElement.removeEventListener('mouseup', this.keyUpHandler);
     };
 
     this.keyDownHandler = (isMouseClick) => {
