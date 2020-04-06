@@ -17,7 +17,7 @@ class LocaleManager {
       }).forEach((key) => {
         const locale = this[localeCode];
         const keyLocale = locale[key.code];
-        key.key.updateChar(keyLocale[0], keyLocale[1]);
+        key.key.updateChar(keyLocale[0], keyLocale[1], keyLocale[2], keyLocale[3]);
       });
     });
   }

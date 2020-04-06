@@ -1,13 +1,15 @@
 import GeneralKey from './general_key';
 
 class CharKey extends GeneralKey {
-  constructor(baseChar, alterChar) {
+  constructor() {
     super('char');
-    this.baseChar = baseChar;
-    this.alterChar = alterChar;
+    this.baseChar = '';
+    this.alterChar = '';
   }
 
-  updateChar(baseChar, alterChar) {
+  updateChar(baseCharView, alterCharView, baseChar, alterChar) {
+    this.baseCharView = baseCharView;
+    this.alterCharView = alterCharView;
     this.baseChar = baseChar;
     this.alterChar = alterChar;
     this.onUpdate();

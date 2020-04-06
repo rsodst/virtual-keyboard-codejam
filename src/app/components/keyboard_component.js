@@ -3,7 +3,8 @@ import KeyboardView from '../view/keyboard_view';
 
 class KeyboardComponent {
   constructor() {
-    this.keyboard = new Keyboard();
+    const currentLayoutNumber = localStorage.getItem('currentLayout');
+    this.keyboard = new Keyboard(currentLayoutNumber);
     this.keyboardView = new KeyboardView(this.keyboard);
   }
 }

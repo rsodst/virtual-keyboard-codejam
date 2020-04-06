@@ -2,6 +2,26 @@ class OemKeyView {
   constructor(oemKey) {
     this.initializeElement(oemKey.keyStyle);
     this.indicatorEnabled = false;
+
+    // subscribe to key handler
+    // eslint-disable-next-line no-param-reassign
+    oemKey.keyEvent = () => {
+      if (oemKey.keyPressed) {
+        this.keyElement.classList.add('key_clicked');
+      } else {
+        this.keyElement.classList.remove('key_clicked');
+      }
+    };
+
+    // subscribe to indicator handler
+    // eslint-disable-next-line no-param-reassign
+    oemKey.keyPressIndicatorEvent = () => {
+      if (oemKey.keyPressIndicatorEnabled) {
+        this.longPressIndicatorElement.classList.add('key__longpress_indicator_enabled');
+      } else {
+        this.longPressIndicatorElement.classList.remove('key__longpress_indicator_enabled');
+      }
+    };
   }
 
   initializeElement(keyStyle) {
@@ -18,22 +38,6 @@ class OemKeyView {
 
     this.keyElement.appendChild(this.keyCharElement);
     this.keyElement.appendChild(this.longPressIndicatorElement);
-  }
-
-  setPressed() {
-    this.keyElement.classList.add('key_clicked');
-  }
-
-  setUnpressed() {
-    this.keyElement.classList.remove('key_clicked');
-  }
-
-  setLongPressed() {
-    this.longPressIndicatorElement.classList.add('key__longpress_indicator_enabled');
-  }
-
-  setLongUnpressed() {
-    this.longPressIndicatorElement.classList.remove('key__longpress_indicator_enabled');
   }
 }
 

@@ -13,22 +13,22 @@ class OemKeyComponent {
 
     this.keyUpHandler = () => {
       clearTimeout(longPressTimeout);
-      inputCallback(this.key, this.keyView);
-      this.keyView.setUnpressed();
+
+      if (inputCallback) {
+        inputCallback(this.key, this.keyView);
+      }
+
+      this.key.isPressed = false;
     };
 
     this.keyDownHandler = (isMouseClick) => {
       this.keyView.keyElement.addEventListener('mouseup', this.keyUpHandler);
-      this.keyView.setPressed();
-      this.keyView.setLongUnpressed();
+      this.key.isPressed = true;
 
       if (this.longPressEnabled && isMouseClick) {
         longPressTimeout = window.setTimeout(() => {
-          console.log('oem key long pressed');
           clearTimeout(longPressTimeout);
           this.keyView.keyElement.removeEventListener('mouseup', this.keyUpHandler);
-          this.keyView.setUnpressed();
-          this.keyView.setLongPressed();
         }, 1000);
       }
     };

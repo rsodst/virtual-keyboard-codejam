@@ -2,18 +2,28 @@ class CharKeyView {
   constructor(charKey) {
     this.initializeElement();
 
-    this.updateView(charKey.baseChar, charKey.alterChar);
+    this.updateView(charKey.baseCharView, charKey.alterCharView);
 
     // subscribe to model update event
     // eslint-disable-next-line no-param-reassign
     charKey.onUpdate = () => {
-      this.updateView(charKey.baseChar, charKey.alterChar);
+      this.updateView(charKey.baseCharView, charKey.alterCharView);
+    };
+
+    // subscribe to key handler
+    // eslint-disable-next-line no-param-reassign
+    charKey.keyEvent = () => {
+      if (charKey.keyPressed) {
+        this.keyElement.classList.add('key_clicked');
+      } else {
+        this.keyElement.classList.remove('key_clicked');
+      }
     };
   }
 
-  updateView(baseChar, alterChar) {
-    this.baseKeyCharElement.innerText = baseChar;
-    this.alterKeyCharElement.innerText = alterChar;
+  updateView(baseCharView, alterCharView) {
+    this.baseKeyCharElement.innerText = baseCharView;
+    this.alterKeyCharElement.innerText = alterCharView;
   }
 
   initializeElement() {
@@ -31,14 +41,6 @@ class CharKeyView {
 
     this.keyElement.appendChild(this.baseKeyCharElement);
     this.keyElement.appendChild(this.alterKeyCharElement);
-  }
-
-  setPressed() {
-    this.keyElement.classList.add('key_clicked');
-  }
-
-  setUnpressed() {
-    this.keyElement.classList.remove('key_clicked');
   }
 }
 

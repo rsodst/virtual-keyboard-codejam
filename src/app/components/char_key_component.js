@@ -2,19 +2,19 @@ import CharKey from '../model/char_key';
 import CharKeyView from '../view/char_key_view';
 
 class CharKeyComponent {
-  constructor(code, baseChar, alterChar, inputCallback) {
+  constructor(code, inputCallback) {
     this.code = code;
-    this.key = new CharKey(baseChar, alterChar);
+    this.key = new CharKey();
     this.keyView = new CharKeyView(this.key);
 
     this.keyUpHandler = () => {
       inputCallback(this.key, this.keyView);
-      this.keyView.setUnpressed();
+      this.key.isPressed = false;
     };
 
     this.keyDownHandler = () => {
       this.keyView.keyElement.addEventListener('mouseup', this.keyUpHandler);
-      this.keyView.setPressed();
+      this.key.isPressed = true;
     };
 
     this.keyView.keyElement.addEventListener('mousedown', this.keyDownHandler);
@@ -22,12 +22,14 @@ class CharKeyComponent {
     document.addEventListener('keydown', (e) => {
       if (e.keyCode === this.code) {
         this.keyDownHandler();
+        e.preventDefault();
       }
     });
 
     document.addEventListener('keyup', (e) => {
       if (e.keyCode === this.code) {
         this.keyUpHandler();
+        e.preventDefault();
       }
     });
   }

@@ -25,7 +25,7 @@ $keyboardBackground: #878787;
 .key {
     $keyWidth: 50;
     $keyHeight: 50;
-    $keyPressDepth: 0.9;
+    $keyPressDepth: 0.96;
 
     font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana,
         sans-serif;
@@ -253,6 +253,9 @@ $keyboardBackground: #878787;
     }
 
     &.key_clicked {
+        background-color: black;
+        border: 1px solid #1c1e25;
+        color: white;
         animation: anim-effect-click 0.3s forwards;
     }
 
