@@ -19,7 +19,7 @@ body {
 
 .container {
     position: fixed;
-
+    
     &::after {
         content: "";
         position: absolute;
@@ -37,6 +37,7 @@ body {
         pointer-events: none;
     }
 }
+
 ::selection {
     background: #0080ff;
     text-shadow: none;
@@ -146,6 +147,7 @@ $keyboardBackground: #878787;
     &.key_style_tab {
         width: #{$keyTabWidth}px;
         height: #{$keyHeight}px;
+
         &::after {
             margin: -25px 0 0 -#{($keyTabWidth) / 2}px;
             width: #{$keyTabWidth}px;
@@ -160,6 +162,7 @@ $keyboardBackground: #878787;
     &.key_style_caps {
         width: #{$keyCapsWidth}px;
         height: #{$keyHeight}px;
+
         &::after {
             margin: -25px 0 0 -#{($keyCapsWidth) / 2}px;
             width: #{$keyCapsWidth}px;
@@ -174,6 +177,7 @@ $keyboardBackground: #878787;
     &.key_style_shift {
         width: #{$keyShiftWidth}px;
         height: #{$keyHeight}px;
+
         &::after {
             margin: -25px 0 0 -#{($keyShiftWidth) / 2}px;
             width: #{$keyShiftWidth}px;
@@ -188,6 +192,7 @@ $keyboardBackground: #878787;
     &.key_style_enter {
         width: #{$keyEnterWidth}px;
         height: #{$keyHeight}px;
+
         &::after {
             margin: -25px 0 0 -#{($keyEnterWidth) / 2}px;
             width: #{$keyEnterWidth}px;
@@ -202,6 +207,7 @@ $keyboardBackground: #878787;
     &.key_style_backspace {
         width: #{$keyBackSpaceWidth}px;
         height: #{$keyHeight}px;
+
         &::after {
             margin: -25px 0 0 -#{($keyBackSpaceWidth) / 2}px;
             width: #{$keyBackSpaceWidth}px;
@@ -216,6 +222,7 @@ $keyboardBackground: #878787;
     &.key_style_ctrl {
         width: #{$keyWidth}px;
         height: #{$keyHeight}px;
+
         &::after {
             margin: -25px 0 0 -#{($keyWidth) / 2}px;
             width: #{$keyWidth}px;
@@ -230,6 +237,7 @@ $keyboardBackground: #878787;
     &.key_style_alt {
         width: #{$keyWidth}px;
         height: #{$keyHeight}px;
+
         &::after {
             margin: -25px 0 0 -#{($keyWidth) / 2}px;
             width: #{$keyWidth}px;
@@ -244,6 +252,7 @@ $keyboardBackground: #878787;
     &.key_style_del {
         width: #{$keyWidth}px;
         height: #{$keyHeight}px;
+
         &::after {
             margin: -25px 0 0 -#{($keyWidth) / 2}px;
             width: #{$keyWidth}px;
@@ -258,6 +267,7 @@ $keyboardBackground: #878787;
     &.key_style_left {
         width: #{$keyWidth}px;
         height: #{$keyHeight}px;
+
         &::after {
             margin: -25px 0 0 -#{($keyWidth) / 2}px;
             width: #{$keyWidth}px;
@@ -272,6 +282,7 @@ $keyboardBackground: #878787;
     &.key_style_bottom {
         width: #{$keyWidth}px;
         height: #{$keyHeight}px;
+
         &::after {
             margin: -25px 0 0 -#{($keyWidth) / 2}px;
             width: #{$keyWidth}px;
@@ -286,6 +297,7 @@ $keyboardBackground: #878787;
     &.key_style_right {
         width: #{$keyWidth}px;
         height: #{$keyHeight}px;
+
         &::after {
             margin: -25px 0 0 -#{($keyWidth) / 2}px;
             width: #{$keyWidth}px;
@@ -300,6 +312,7 @@ $keyboardBackground: #878787;
     &.key_style_top {
         width: #{$keyWidth}px;
         height: #{$keyHeight}px;
+
         &::after {
             margin: -25px 0 0 -#{($keyWidth) / 2}px;
             width: #{$keyWidth}px;
@@ -314,6 +327,7 @@ $keyboardBackground: #878787;
     &.key_style_home {
         width: #{$keyHomeWidth}px;
         height: #{$keyHeight}px;
+
         &::after {
             margin: -25px 0 0 -#{($keyHomeWidth) / 2}px;
             width: #{$keyHomeWidth}px;
@@ -328,6 +342,7 @@ $keyboardBackground: #878787;
     &.key_style_end {
         width: #{$keyEndWidth}px;
         height: #{$keyHeight}px;
+
         &::after {
             margin: -25px 0 0 -#{($keyEndWidth) / 2}px;
             width: #{$keyEndWidth}px;
@@ -384,6 +399,7 @@ $keyboardBackground: #878787;
 
     &.key_clicked {
         opacity: 0.4;
+
         &::after {
             background-color: gray;
             border: 1px solid #1c1e25;
@@ -396,10 +412,13 @@ $keyboardBackground: #878787;
         0% {
             transform: scale3d(0.3, 0.3, 1);
         }
+
         25%,
+
         50% {
             opacity: 1;
         }
+
         to {
             opacity: 0;
             transform: scale3d(1.2, 1.2, 1);
