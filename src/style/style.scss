@@ -19,6 +19,7 @@ body {
 
 .container {
     position: fixed;
+
     &::after {
         content: "";
         position: absolute;
@@ -47,17 +48,13 @@ $keyboardBackground: #878787;
 
 .keyboard {
     position: absolute;
-
     background-color: $keyboardBackground;
-
     display: inline-flex;
     flex-direction: column;
     align-items: start;
-
     padding: 2px;
     border-radius: 5px;
     border: 2px solid rgb(77, 76, 76);
-
     top: 300px;
     left: 20px;
 }
@@ -71,11 +68,21 @@ $keyboardBackground: #878787;
     $keyWidth: 50;
     $keyHeight: 50;
     $keyPressDepth: 0.96;
+    // declare width for special key
+    $keyBackSpaceWidth: $keyWidth * 1.3;
+    $keySpaceWidth: $keyWidth * 7.1;
+    $keyTabWidth: $keyWidth * 1.3;
+    $keyCapsWidth: $keyWidth * 1.6;
+    $keyShiftWidth: $keyWidth * 1.9;
+    $keyEnterWidth: $keyWidth * 1.74;
+    $keyEndWidth: $keyWidth * 1.44;
+    $keyHomeWidth: $keyWidth * 1.44;
 
     position: relative;
-
-    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana,
-        sans-serif;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    transition: all 150ms ease;
+    cursor: pointer;
+    user-select: none;
 
     &::after {
         position: absolute;
@@ -91,13 +98,10 @@ $keyboardBackground: #878787;
         font-size: 14px;
         width: #{$keyWidth}px;
         height: #{$keyHeight}px;
-
         background-color: #1c1e25;
         color: rgb(221, 221, 221);
-
         border: 1px solid $keyboardBackground;
         border-radius: 5px;
-
         display: grid;
         gap: 0;
         grid-template-rows: 1fr 1fr;
@@ -117,22 +121,20 @@ $keyboardBackground: #878787;
         font-size: 12px;
         background-color: #1c1e25;
         color: rgb(221, 221, 221);
-
         border: 1px solid $keyboardBackground;
         border-radius: 5px;
-
         display: flex;
         justify-content: center;
         align-items: center;
     }
 
     &.key_style_space {
-        width: #{$keyWidth * 7.1}px;
+        width: #{$keySpaceWidth}px;
         height: #{$keyHeight}px;
 
         &::after {
-            margin: -25px 0 0 -#{($keyWidth * 7.1) / 2}px;
-            width: #{$keyWidth * 7.1}px;
+            margin: -25px 0 0 -#{($keySpaceWidth) / 2}px;
+            width: #{$keySpaceWidth}px;
             height: #{$keyHeight}px;
         }
     }
@@ -142,11 +144,11 @@ $keyboardBackground: #878787;
     }
 
     &.key_style_tab {
-        width: #{$keyWidth * 1.3}px;
+        width: #{$keyTabWidth}px;
         height: #{$keyHeight}px;
         &::after {
-            margin: -25px 0 0 -#{($keyWidth * 1.3) / 2}px;
-            width: #{$keyWidth * 1.3}px;
+            margin: -25px 0 0 -#{($keyTabWidth) / 2}px;
+            width: #{$keyTabWidth}px;
             height: #{$keyHeight}px;
         }
     }
@@ -156,11 +158,11 @@ $keyboardBackground: #878787;
     }
 
     &.key_style_caps {
-        width: #{$keyWidth * 1.6}px;
+        width: #{$keyCapsWidth}px;
         height: #{$keyHeight}px;
         &::after {
-            margin: -25px 0 0 -#{($keyWidth * 1.6) / 2}px;
-            width: #{$keyWidth * 1.6}px;
+            margin: -25px 0 0 -#{($keyCapsWidth) / 2}px;
+            width: #{$keyCapsWidth}px;
             height: #{$keyHeight}px;
         }
     }
@@ -170,11 +172,11 @@ $keyboardBackground: #878787;
     }
 
     &.key_style_shift {
-        width: #{$keyWidth * 1.9}px;
+        width: #{$keyShiftWidth}px;
         height: #{$keyHeight}px;
         &::after {
-            margin: -25px 0 0 -#{($keyWidth * 1.9) / 2}px;
-            width: #{$keyWidth * 1.9}px;
+            margin: -25px 0 0 -#{($keyShiftWidth) / 2}px;
+            width: #{$keyShiftWidth}px;
             height: #{$keyHeight}px;
         }
     }
@@ -184,11 +186,11 @@ $keyboardBackground: #878787;
     }
 
     &.key_style_enter {
-        width: #{$keyWidth * 1.74}px;
+        width: #{$keyEnterWidth}px;
         height: #{$keyHeight}px;
         &::after {
-            margin: -25px 0 0 -#{($keyWidth * 1.74) / 2}px;
-            width: #{$keyWidth * 1.74}px;
+            margin: -25px 0 0 -#{($keyEnterWidth) / 2}px;
+            width: #{$keyEnterWidth}px;
             height: #{$keyHeight}px;
         }
     }
@@ -198,11 +200,11 @@ $keyboardBackground: #878787;
     }
 
     &.key_style_backspace {
-        width: #{$keyWidth * 1.3}px;
+        width: #{$keyBackSpaceWidth}px;
         height: #{$keyHeight}px;
         &::after {
-            margin: -25px 0 0 -#{($keyWidth * 1.3) / 2}px;
-            width: #{$keyWidth * 1.3}px;
+            margin: -25px 0 0 -#{($keyBackSpaceWidth) / 2}px;
+            width: #{$keyBackSpaceWidth}px;
             height: #{$keyHeight}px;
         }
     }
@@ -310,11 +312,11 @@ $keyboardBackground: #878787;
     }
 
     &.key_style_home {
-        width: #{$keyWidth * 1.44}px;
+        width: #{$keyHomeWidth}px;
         height: #{$keyHeight}px;
         &::after {
-            margin: -25px 0 0 -#{($keyWidth * 1.44) / 2}px;
-            width: #{$keyWidth * 1.44}px;
+            margin: -25px 0 0 -#{($keyHomeWidth) / 2}px;
+            width: #{$keyHomeWidth}px;
             height: #{$keyHeight}px;
         }
     }
@@ -324,11 +326,11 @@ $keyboardBackground: #878787;
     }
 
     &.key_style_end {
-        width: #{$keyWidth * 1.44}px;
+        width: #{$keyEndWidth}px;
         height: #{$keyHeight}px;
         &::after {
-            margin: -25px 0 0 -#{($keyWidth * 1.44) / 2}px;
-            width: #{$keyWidth * 1.44}px;
+            margin: -25px 0 0 -#{($keyEndWidth) / 2}px;
+            width: #{$keyEndWidth}px;
             height: #{$keyHeight}px;
         }
     }
@@ -336,11 +338,6 @@ $keyboardBackground: #878787;
     &.key_style_end:before {
         content: "end";
     }
-
-    transition: all 150ms ease;
-
-    cursor: pointer;
-    user-select: none;
 
     &:hover {
         background-color: black;
@@ -351,10 +348,8 @@ $keyboardBackground: #878787;
     .key__longpress_indicator {
         width: 10px;
         height: 10px;
-
         position: absolute;
         right: 10px;
-
         border-radius: 50%;
     }
 
@@ -365,9 +360,7 @@ $keyboardBackground: #878787;
     .key__char {
         width: #{$keyWidth/2}px;
         height: #{$keyHeight/2}px;
-
         box-sizing: border-box;
-
         display: flex;
         justify-content: center;
         align-items: center;

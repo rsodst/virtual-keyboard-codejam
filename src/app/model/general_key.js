@@ -2,7 +2,6 @@ class GeneralKey {
   constructor(type) {
     this.type = type;
     this.keyPressed = false;
-    this.keyEvent = undefined;
   }
 
   get isPressed() {
