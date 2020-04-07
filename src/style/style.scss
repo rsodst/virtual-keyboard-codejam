@@ -19,7 +19,7 @@ body {
 
 .container {
     position: fixed;
-    
+
     &::after {
         content: "";
         position: absolute;
@@ -95,7 +95,7 @@ $keyboardBackground: #878787;
         z-index: 99;
     }
 
-    &.key_type_char {
+    &.key--type-char {
         font-size: 14px;
         width: #{$keyWidth}px;
         height: #{$keyHeight}px;
@@ -118,7 +118,7 @@ $keyboardBackground: #878787;
         }
     }
 
-    &.key_type_oem {
+    &.key--type-oem {
         font-size: 12px;
         background-color: #1c1e25;
         color: rgb(221, 221, 221);
@@ -129,7 +129,7 @@ $keyboardBackground: #878787;
         align-items: center;
     }
 
-    &.key_style_space {
+    &.key--style-space {
         width: #{$keySpaceWidth}px;
         height: #{$keyHeight}px;
 
@@ -140,11 +140,11 @@ $keyboardBackground: #878787;
         }
     }
 
-    &.key_style_space:before {
+    &.key--style-space:before {
         content: "[----]";
     }
 
-    &.key_style_tab {
+    &.key--style-tab {
         width: #{$keyTabWidth}px;
         height: #{$keyHeight}px;
 
@@ -155,11 +155,11 @@ $keyboardBackground: #878787;
         }
     }
 
-    &.key_style_tab:before {
+    &.key--style-tab:before {
         content: "Tab";
     }
 
-    &.key_style_caps {
+    &.key--style-caps {
         width: #{$keyCapsWidth}px;
         height: #{$keyHeight}px;
 
@@ -170,11 +170,11 @@ $keyboardBackground: #878787;
         }
     }
 
-    &.key_style_caps:before {
+    &.key--style-caps:before {
         content: "Caps";
     }
 
-    &.key_style_shift {
+    &.key--style-shift {
         width: #{$keyShiftWidth}px;
         height: #{$keyHeight}px;
 
@@ -185,11 +185,11 @@ $keyboardBackground: #878787;
         }
     }
 
-    &.key_style_shift:before {
+    &.key--style-shift:before {
         content: "Shift";
     }
 
-    &.key_style_enter {
+    &.key--style-enter {
         width: #{$keyEnterWidth}px;
         height: #{$keyHeight}px;
 
@@ -200,11 +200,11 @@ $keyboardBackground: #878787;
         }
     }
 
-    &.key_style_enter:before {
+    &.key--style-enter:before {
         content: "Enter";
     }
 
-    &.key_style_backspace {
+    &.key--style-backspace {
         width: #{$keyBackSpaceWidth}px;
         height: #{$keyHeight}px;
 
@@ -215,11 +215,11 @@ $keyboardBackground: #878787;
         }
     }
 
-    &.key_style_backspace:before {
+    &.key--style-backspace:before {
         content: "<-----";
     }
 
-    &.key_style_ctrl {
+    &.key--style-ctrl {
         width: #{$keyWidth}px;
         height: #{$keyHeight}px;
 
@@ -230,11 +230,11 @@ $keyboardBackground: #878787;
         }
     }
 
-    &.key_style_ctrl:before {
+    &.key--style-ctrl:before {
         content: "    Ctrl";
     }
 
-    &.key_style_alt {
+    &.key--style-alt {
         width: #{$keyWidth}px;
         height: #{$keyHeight}px;
 
@@ -245,11 +245,11 @@ $keyboardBackground: #878787;
         }
     }
 
-    &.key_style_alt:before {
+    &.key--style-alt:before {
         content: "    Alt";
     }
 
-    &.key_style_del {
+    &.key--style-del {
         width: #{$keyWidth}px;
         height: #{$keyHeight}px;
 
@@ -260,11 +260,11 @@ $keyboardBackground: #878787;
         }
     }
 
-    &.key_style_del:before {
+    &.key--style-del:before {
         content: "    Del";
     }
 
-    &.key_style_left {
+    &.key--style-left {
         width: #{$keyWidth}px;
         height: #{$keyHeight}px;
 
@@ -275,11 +275,11 @@ $keyboardBackground: #878787;
         }
     }
 
-    &.key_style_left:before {
+    &.key--style-left:before {
         content: "  <--";
     }
 
-    &.key_style_bottom {
+    &.key--style-bottom {
         width: #{$keyWidth}px;
         height: #{$keyHeight}px;
 
@@ -290,11 +290,11 @@ $keyboardBackground: #878787;
         }
     }
 
-    &.key_style_bottom:before {
+    &.key--style-bottom:before {
         content: "     \\/";
     }
 
-    &.key_style_right {
+    &.key--style-right {
         width: #{$keyWidth}px;
         height: #{$keyHeight}px;
 
@@ -305,11 +305,11 @@ $keyboardBackground: #878787;
         }
     }
 
-    &.key_style_right:before {
+    &.key--style-right:before {
         content: "  -->";
     }
 
-    &.key_style_top {
+    &.key--style-top {
         width: #{$keyWidth}px;
         height: #{$keyHeight}px;
 
@@ -320,11 +320,11 @@ $keyboardBackground: #878787;
         }
     }
 
-    &.key_style_top:before {
+    &.key--style-top:before {
         content: "     /\\";
     }
 
-    &.key_style_home {
+    &.key--style-home {
         width: #{$keyHomeWidth}px;
         height: #{$keyHeight}px;
 
@@ -335,11 +335,11 @@ $keyboardBackground: #878787;
         }
     }
 
-    &.key_style_home:before {
+    &.key--style-home:before {
         content: "home";
     }
 
-    &.key_style_end {
+    &.key--style-end {
         width: #{$keyEndWidth}px;
         height: #{$keyHeight}px;
 
@@ -350,7 +350,7 @@ $keyboardBackground: #878787;
         }
     }
 
-    &.key_style_end:before {
+    &.key--style-end:before {
         content: "end";
     }
 
@@ -360,7 +360,7 @@ $keyboardBackground: #878787;
         color: white;
     }
 
-    .key__longpress_indicator {
+    .key__longpress-indicator {
         width: 10px;
         height: 10px;
         position: absolute;
@@ -368,7 +368,7 @@ $keyboardBackground: #878787;
         border-radius: 50%;
     }
 
-    .key__longpress_indicator_enabled {
+    .key__longpress-indicator--enabled {
         background-color: rgb(236, 17, 17);
     }
 
@@ -381,23 +381,23 @@ $keyboardBackground: #878787;
         align-items: center;
     }
 
-    .key__char_position_bl {
+    .key__char--position-bl {
         grid-area: bl;
     }
 
-    .key__char_position_br {
+    .key__char--position-br {
         grid-area: br;
     }
 
-    .key__char_position_tl {
+    .key__char--position-tl {
         grid-area: tl;
     }
 
-    .key__char_position_tr {
+    .key__char--position-tr {
         grid-area: tr;
     }
 
-    &.key_clicked {
+    &.key--clicked {
         opacity: 0.4;
 
         &::after {

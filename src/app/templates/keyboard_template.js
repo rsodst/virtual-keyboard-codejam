@@ -56,7 +56,7 @@ const KeyboardTemplate = [
     {
       type: 'oem',
       code: 8,
-      style: 'key_style_backspace',
+      style: 'key--style-backspace',
     },
   ],
   // tab,qwertyuiop[]\
@@ -64,7 +64,7 @@ const KeyboardTemplate = [
     {
       type: 'oem',
       code: 9,
-      style: 'key_style_tab',
+      style: 'key--style-tab',
     },
     {
       type: 'char',
@@ -124,7 +124,7 @@ const KeyboardTemplate = [
     {
       type: 'oem',
       code: 20,
-      style: 'key_style_caps',
+      style: 'key--style-caps',
     },
     {
       type: 'char',
@@ -173,7 +173,7 @@ const KeyboardTemplate = [
     {
       type: 'oem',
       code: 13,
-      style: 'key_style_enter',
+      style: 'key--style-enter',
     },
   ],
   // shift,zxcvbnm,./
@@ -181,7 +181,7 @@ const KeyboardTemplate = [
     {
       type: 'oem',
       code: 16,
-      style: 'key_style_shift',
+      style: 'key--style-shift',
     },
     {
       type: 'char',
@@ -222,7 +222,7 @@ const KeyboardTemplate = [
     {
       type: 'oem',
       code: 38,
-      style: 'key_style_top',
+      style: 'key--style-top',
     },
     {
       type: 'char',
@@ -231,7 +231,7 @@ const KeyboardTemplate = [
     {
       type: 'oem',
       code: 36,
-      style: 'key_style_home',
+      style: 'key--style-home',
     },
   ],
   // ctrl,win,alt,space
@@ -239,42 +239,42 @@ const KeyboardTemplate = [
     {
       type: 'oem',
       code: 17,
-      style: 'key_style_ctrl',
+      style: 'key--style-ctrl',
     },
     {
       type: 'oem',
       code: 46,
-      style: 'key_style_del',
+      style: 'key--style-del',
     },
     {
       type: 'oem',
       code: 18,
-      style: 'key_style_alt',
+      style: 'key--style-alt',
     },
     {
       type: 'oem',
       code: 32,
-      style: 'key_style_space',
+      style: 'key--style-space',
     },
     { // left
       type: 'oem',
       code: 37,
-      style: 'key_style_left',
+      style: 'key--style-left',
     },
     { // bottom
       type: 'oem',
       code: 40,
-      style: 'key_style_bottom',
+      style: 'key--style-bottom',
     },
     { // right
       type: 'oem',
       code: 39,
-      style: 'key_style_right',
+      style: 'key--style-right',
     },
     {
       type: 'oem',
       code: 35,
-      style: 'key_style_end',
+      style: 'key--style-end',
     },
   ],
 ];

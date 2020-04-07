@@ -14,9 +14,9 @@ class CharKeyView {
     // eslint-disable-next-line no-param-reassign
     charKey.keyEvent = () => {
       if (charKey.keyPressed) {
-        this.keyElement.classList.add('key_clicked');
+        this.keyElement.classList.add('key--clicked');
       } else {
-        this.keyElement.classList.remove('key_clicked');
+        this.keyElement.classList.remove('key--clicked');
       }
     };
   }
@@ -29,15 +29,15 @@ class CharKeyView {
   initializeElement() {
     this.keyElement = document.createElement('div');
     this.keyElement.classList.add('key');
-    this.keyElement.classList.add('key_type_char');
+    this.keyElement.classList.add('key--type-char');
 
     this.baseKeyCharElement = document.createElement('div');
     this.baseKeyCharElement.classList.add('key__char');
-    this.baseKeyCharElement.classList.add('key__char_position_br');
+    this.baseKeyCharElement.classList.add('key__char--position-br');
 
     this.alterKeyCharElement = document.createElement('div');
     this.alterKeyCharElement.classList.add('key__char');
-    this.alterKeyCharElement.classList.add('key__char_position_tl');
+    this.alterKeyCharElement.classList.add('key__char--position-tl');
 
     this.keyElement.appendChild(this.baseKeyCharElement);
     this.keyElement.appendChild(this.alterKeyCharElement);

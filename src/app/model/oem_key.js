@@ -5,14 +5,9 @@ class OemKey extends GeneralKey {
     super('oem');
     this.keyStyle = keyStyle;
     this.keyPressIndicatorEnabled = false;
-    this.keyPressIndicatorEvent = undefined;
   }
 
-  get isKeyPressIndicatorEnabled() {
-    return this.keyPressIndicatorEnabled;
-  }
-
-  set isKeyPressIndicatorEnabled(status) {
+  setKeyPressIndicatorEnabled(status) {
     this.keyPressIndicatorEnabled = status;
     this.keyPressIndicatorEvent(status);
   }

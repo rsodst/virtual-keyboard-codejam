@@ -1,9 +1,6 @@
-/* eslint-disable implicit-arrow-linebreak */
-/* eslint-disable no-param-reassign */
-/* eslint-disable indent */
-
 import CharKeyComponent from '../components/char_key_component';
 import OemKeyComponent from '../components/oem_key_component';
+import KEYBOARD_BUTTONS from './keyboard_buttons';
 
 class KeyboardBuilder {
   static buildKeyboardRows(template, keyboard) {
@@ -16,10 +13,7 @@ class KeyboardBuilder {
     return keyboardRows;
   }
 
-  // eslint-disable-next-line class-methods-use-this
   static createKeyRow(templateRow, keyboard) {
-    // text area controls
-
     this.textArea = document.getElementById('text-area');
 
     this.textArea.onblur = () => {
@@ -44,13 +38,17 @@ class KeyboardBuilder {
       let key;
 
       if (templateKey.type === 'oem') {
-        if (templateKey.code === 20) {
+        if (templateKey.code === KEYBOARD_BUTTONS.caps) {
           key = new OemKeyComponent(templateKey.code, templateKey.style, (inputKey) => {
-            inputKey.isKeyPressIndicatorEnabled = !inputKey.isKeyPressIndicatorEnabled;
+            if (inputKey.keyPressIndicatorEnabled) {
+              inputKey.setKeyPressIndicatorEnabled(false);
+            } else {
+              inputKey.setKeyPressIndicatorEnabled(true);
+            }
           });
         }
 
-        if (templateKey.code === 16) {
+        if (templateKey.code === KEYBOARD_BUTTONS.shift) {
           key = new OemKeyComponent(templateKey.code, templateKey.style, () => {
             if (this.ctrlKey.key.isPressed) {
               keyboard.changeLayout();
@@ -58,7 +56,7 @@ class KeyboardBuilder {
           }, true);
         }
 
-        if (templateKey.code === 17) {
+        if (templateKey.code === KEYBOARD_BUTTONS.ctrl) {
           key = new OemKeyComponent(templateKey.code, templateKey.style, () => {
             if (this.shiftKey.key.isPressed) {
               keyboard.changeLayout();
@@ -66,8 +64,7 @@ class KeyboardBuilder {
           }, true);
         }
 
-        // space
-        if (templateKey.code === 32) {
+        if (templateKey.code === KEYBOARD_BUTTONS.space) {
           key = new OemKeyComponent(templateKey.code, templateKey.style, () => {
             const { value: val, selectionStart: start, selectionEnd: end } = this.textArea;
             this.textArea.value = `${val.substring(0, start)} ${val.substring(end)}`;
@@ -75,8 +72,7 @@ class KeyboardBuilder {
           });
         }
 
-        // enter
-        if (templateKey.code === 13) {
+        if (templateKey.code === KEYBOARD_BUTTONS.enter) {
           key = new OemKeyComponent(templateKey.code, templateKey.style, () => {
             const { value: val, selectionStart: start, selectionEnd: end } = this.textArea;
             this.textArea.value = `${val.substring(0, start)}\n${val.substring(end)}`;
@@ -84,8 +80,7 @@ class KeyboardBuilder {
           });
         }
 
-        // backspace
-        if (templateKey.code === 8) {
+        if (templateKey.code === KEYBOARD_BUTTONS.backspace) {
           key = new OemKeyComponent(templateKey.code, templateKey.style, () => {
             const { value: val, selectionStart: start, selectionEnd: end } = this.textArea;
             if (start !== end) {
@@ -100,8 +95,7 @@ class KeyboardBuilder {
           });
         }
 
-        // tab
-        if (templateKey.code === 9) {
+        if (templateKey.code === KEYBOARD_BUTTONS.tab) {
           key = new OemKeyComponent(templateKey.code, templateKey.style, () => {
             const textArea = document.getElementById('text-area');
             const { value: val, selectionStart: start, selectionEnd: end } = textArea;
@@ -110,50 +104,43 @@ class KeyboardBuilder {
           });
         }
 
-        // left
-        if (templateKey.code === 37) {
+        if (templateKey.code === KEYBOARD_BUTTONS.left) {
           key = new OemKeyComponent(templateKey.code, templateKey.style, () => {
             setPositionCursor(this.textArea.selectionStart - 1);
           }, false, false, true);
         }
 
-        // right
-        if (templateKey.code === 39) {
+        if (templateKey.code === KEYBOARD_BUTTONS.right) {
           key = new OemKeyComponent(templateKey.code, templateKey.style, () => {
             setPositionCursor(this.textArea.selectionStart + 1);
           }, false, false, true);
         }
 
-        // up
-        if (templateKey.code === 38) {
+        if (templateKey.code === KEYBOARD_BUTTONS.up) {
           key = new OemKeyComponent(templateKey.code, templateKey.style, () => {
             setPositionCursor(0);
           }, false, false, true);
         }
 
-        // down
-        if (templateKey.code === 40) {
+        if (templateKey.code === KEYBOARD_BUTTONS.down) {
           key = new OemKeyComponent(templateKey.code, templateKey.style, () => {
             setPositionCursor(this.textArea.value.length);
           }, false, false, true);
         }
 
-        // home
-        if (templateKey.code === 36) {
+        if (templateKey.code === KEYBOARD_BUTTONS.home) {
           key = new OemKeyComponent(templateKey.code, templateKey.style, () => {
             setPositionCursor(0);
           }, false, false);
         }
 
-        // end
-        if (templateKey.code === 35) {
+        if (templateKey.code === KEYBOARD_BUTTONS.end) {
           key = new OemKeyComponent(templateKey.code, templateKey.style, () => {
             setPositionCursor(this.textArea.value.length);
           }, false, false);
         }
 
-        // delete
-        if (templateKey.code === 46) {
+        if (templateKey.code === KEYBOARD_BUTTONS.delete) {
           key = new OemKeyComponent(templateKey.code, templateKey.style, () => {
             const { value: val, selectionStart: start, selectionEnd: end } = this.textArea;
             if (start !== end) {
@@ -165,7 +152,7 @@ class KeyboardBuilder {
           }, false, false, true);
         }
 
-        if (key === undefined) {
+        if (!key) {
           key = new OemKeyComponent(templateKey.code, templateKey.style, () => { });
         }
       }
@@ -180,19 +167,15 @@ class KeyboardBuilder {
         });
       }
 
-
-      // save oem shift
-      if (templateKey.code === 16) {
+      if (templateKey.code === KEYBOARD_BUTTONS.shift) {
         this.shiftKey = key;
       }
 
-      // save oem caps
-      if (templateKey.code === 20) {
+      if (templateKey.code === KEYBOARD_BUTTONS.caps) {
         this.capsKey = key;
       }
 
-      // save oem ctrl
-      if (templateKey.code === 17) {
+      if (templateKey.code === KEYBOARD_BUTTONS.ctrl) {
         this.ctrlKey = key;
       }
 

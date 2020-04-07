@@ -23,9 +23,7 @@ class KeyboardView {
       this.dragFunction(event);
     };
 
-    this.keyboardView.ondragstart = function () {
-      return false;
-    };
+    this.keyboardView.ondragstart = () => false;
 
     this.dragFunction = (event) => {
       const shiftX = event.clientX - this.keyboardView.getBoundingClientRect().left;
