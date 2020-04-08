@@ -1,10 +1,11 @@
 import GeneralKey from './general_key';
 
 class CharKey extends GeneralKey {
-  constructor() {
+  constructor(style) {
     super('char');
     this.baseChar = '';
     this.alterChar = '';
+    this.style = style;
   }
 
   updateChar(baseCharView, alterCharView, baseChar, alterChar) {

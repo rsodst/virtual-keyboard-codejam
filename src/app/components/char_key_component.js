@@ -2,9 +2,9 @@ import CharKey from '../model/char_key';
 import CharKeyView from '../view/char_key_view';
 
 class CharKeyComponent {
-  constructor(code, inputCallback) {
+  constructor(code, style, inputCallback) {
     this.code = code;
-    this.key = new CharKey();
+    this.key = new CharKey(style);
     this.keyView = new CharKeyView(this.key);
 
     this.keyUpHandler = () => {

@@ -158,8 +158,14 @@ class KeyboardBuilder {
       }
 
       if (templateKey.type === 'char') {
-        key = new CharKeyComponent(templateKey.code, (pressedKey) => {
-          if (this.shiftKey.key.isPressed || this.capsKey.key.keyPressIndicatorEnabled) {
+        key = new CharKeyComponent(templateKey.code, templateKey.style, (pressedKey) => {
+          if (pressedKey.style === 'key--ignore-caps') {
+            if (this.shiftKey.key.isPressed) {
+              writeText(pressedKey.alterChar);
+            } else {
+              writeText(pressedKey.baseChar);
+            }
+          } else if (this.shiftKey.key.isPressed || this.capsKey.key.keyPressIndicatorEnabled) {
             writeText(pressedKey.alterChar);
           } else {
             writeText(pressedKey.baseChar);

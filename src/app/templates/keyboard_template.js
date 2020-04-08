@@ -4,54 +4,67 @@ const KeyboardTemplate = [
     {
       type: 'char',
       code: 192,
+      style: 'key--ignore-caps',
     },
     {
       type: 'char',
       code: 49,
+      style: 'key--ignore-caps',
     },
     {
       type: 'char',
       code: 50,
+      style: 'key--ignore-caps',
     },
     {
       type: 'char',
       code: 51,
+      style: 'key--ignore-caps',
     },
     {
       type: 'char',
       code: 52,
+      style: 'key--ignore-caps',
     },
     {
       type: 'char',
       code: 53,
+      style: 'key--ignore-caps',
     },
     {
       type: 'char',
       code: 54,
+      style: 'key--ignore-caps',
     },
     {
       type: 'char',
       code: 55,
+      style: 'key--ignore-caps',
     },
     {
       type: 'char',
       code: 56,
+      style: 'key--ignore-caps',
     },
     {
       type: 'char',
       code: 57,
+      style: 'key--ignore-caps',
     },
     {
       type: 'char',
       code: 48,
+      style: 'key--ignore-caps',
     },
-    { //-
+    {
       type: 'char',
       code: 189,
+      style: 'key--ignore-caps',
     },
-    { //+
+    { //
       type: 'char',
       code: 187,
+      style: 'key--ignore-caps',
     },
     {
       type: 'oem',
